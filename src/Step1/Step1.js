@@ -53,8 +53,6 @@ export default function Selects() {
   const [attendance, setAttendance] = useState([]);
   const [contentArr, setContentArr] = useState([]);
   const [finished, setFinished] = useState(false);
-  const firstStep = useSelector((state) => state.StepOneReducer);
-
 
   const setContent = (value, index) => {
     const newArr = contentArr.map((item) => item);
@@ -131,15 +129,19 @@ export default function Selects() {
             </TransitionGroup>
           </List>
         </FormControl>
-        {finished ? (
-          <Grid lg={12} item container justifyContent="center">
+        <Grid lg={12} item container justifyContent="center">
+          <List>
             <TransitionGroup>
-              <CheckIcon className="correct-icon" />
+              {finished ? (
+                <Collapse in={true}>
+                  <CheckIcon className="correct-icon" />
+                </Collapse>
+              ) : (
+                <></>
+              )}
             </TransitionGroup>
-          </Grid>
-        ) : (
-          <></>
-        )}
+          </List>
+        </Grid>
       </Grid>
     </>
   );

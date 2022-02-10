@@ -35,6 +35,12 @@ body {
   width: 100%;
 }
 
+.card-three {
+  padding: 35px 35px 35px 35px;
+  margin: 5px;
+  background-color: hsl(11deg 49% 80%) !important;
+  width: 100%;
+}
 .grid-one {
   height: 100%;
   width: 100%;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { StepTwoMethod } from "../Redux/Step2";
 import {
   Radio,
   RadioGroup,
@@ -12,12 +13,16 @@ import {
   Grid,
 } from "@material-ui/core";
 import { TransitionGroup } from "react-transition-group";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CheckIcon from "@mui/icons-material/Check";
 
 export default function Step2() {
+  const dispatch = useDispatch();
   const [Fanswer, setFanswer] = useState("");
   const [Sanswer, setSanswer] = useState("");
+  const firstStep = useSelector((state) => state.StepOneReducer);
+
+  console.log(firstStep);
 
   const isYes = () => {
     if (Fanswer === "Yes") {
@@ -28,6 +33,7 @@ export default function Step2() {
 
   const hundleFinished = () => {
     if (Fanswer !== "" && Sanswer !== "") {
+      dispatch(StepTwoMethod(true));
       return true;
     } else return false;
   };
@@ -41,6 +47,7 @@ export default function Step2() {
         <FormControl>
           <RadioGroup row>
             <FormControlLabel
+              disabled={!firstStep}
               onChange={(e) => {
                 setFanswer(e.target.value);
               }}
@@ -49,6 +56,7 @@ export default function Step2() {
               label="Yes"
             />
             <FormControlLabel
+              disabled={!firstStep}
               onChange={(e) => {
                 setFanswer(e.target.value);
               }}
@@ -92,6 +100,7 @@ export default function Step2() {
         <FormControl>
           <RadioGroup row>
             <FormControlLabel
+              disabled={!firstStep}
               onChange={(e) => {
                 setSanswer(e.target.value);
               }}
@@ -100,6 +109,7 @@ export default function Step2() {
               label="Yes"
             />
             <FormControlLabel
+              disabled={!firstStep}
               onChange={(e) => {
                 setSanswer(e.target.value);
               }}
