@@ -1,0 +1,59 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image: url("/public/bg.jpg");
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Montserrat, serif !important;
+}
+
+.header {
+  font-style: italic;
+  font-size: 25px;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.header-color {
+  color: rgb(40, 129, 207);
+}
+
+.card-one {
+  padding: 35px 35px 35px 35px;
+  margin: 5px;
+  background-color: #bcecdc !important;
+  width: 100%;
+}
+
+.card-two {
+  padding: 35px 35px 35px 35px;
+  margin: 5px;
+  background-color: hsl(206deg 65% 71%) !important;
+  width: 100%;
+}
+
+.grid-one {
+  height: 100%;
+  width: 100%;
+}
+
+.correct-icon {
+  color: green;
+  font-size: 85px !important;
+  align-self: center;
+}
+
+.steps {
+  width: 4%;
+  position: absolute;
+  top: 10%;
+  border-radius: 9px !important;
+}
+
+.step-text {
+  font-size: 25px !important;
+  font-weight: bold !important;
+}
