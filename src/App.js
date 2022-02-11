@@ -13,53 +13,62 @@ function App() {
   return (
     <>
       <Box sx={{ p: "2%", maxWidth: "45 %" }}>
-        <Typography className="header" variant="h2">
-          Seminar <span className="header-color">Registration</span>
-        </Typography>
         <Grid container>
-          <Grid style={{ height: "25vh" }} item container lg={4}>
-            <Card className="card-one">
+          <Grid style={{ paddingBottom: "3%" }} item lg={12}>
+            <Typography
+              style={{ color: "white" }}
+              className="header"
+              variant="h2"
+            >
+              Seminar <span className="header-color">Registration</span>
+            </Typography>
+          </Grid>
+          <Grid container alignItems="flex-start">
+            <Grid item container lg={4}>
               <Card className="steps">
                 <Typography className="step-text">Step 1</Typography>
               </Card>
-              <Typography className="header" variant="h5">
-                How many people will be attending?
-              </Typography>
-              <Selects />
-            </Card>
-          </Grid>
-          <Grid
-            style={{
-              opacity: firstStep ? "1" : "0.5",
-              userSelect: firstStep ? "auto" : "none",
-            }}
-            item
-            container
-            lg={4}
-          >
-            <Card className="card-two">
+              <Card className="card-one">
+                <Typography className="header" variant="h5">
+                  How many people will be attending?
+                </Typography>
+                <Selects />
+              </Card>
+            </Grid>
+            <Grid
+              style={{
+                opacity: firstStep ? "1" : "0.5",
+                userSelect: firstStep ? "auto" : "none",
+              }}
+              item
+              container
+              lg={4}
+              sm={12}
+            >
               <Card className="steps">
                 <Typography className="step-text">Step 2</Typography>
               </Card>
-              <Step2 />
-            </Card>
-          </Grid>
-          <Grid
-            style={{
-              opacity: SecondStep ? "1" : "0.5",
-              userSelect: SecondStep ? "auto" : "none",
-              height: "20vh",
-            }}
-            item
-            container
-            lg={4}
-          >
-            <Card className="card-three">
+              <Card className="card-two">
+                <Step2 />
+              </Card>
+            </Grid>
+            <Grid
+              style={{
+                opacity: SecondStep ? "1" : "0.5",
+                userSelect: SecondStep ? "auto" : "none",
+              }}
+              item
+              container
+              lg={4}
+              sm={12}
+            >
               <Card className="steps">
                 <Typography className="step-text">Step 3</Typography>
               </Card>
-              <Step3 />
-            </Card>
+              <Card className="card-three">
+                <Step3 />
+              </Card>
+            </Grid>
           </Grid>
         </Grid>
       </Box>

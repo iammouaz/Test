@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StepTwoMethod } from "../Redux/Step2";
 import {
   Radio,
@@ -14,15 +14,19 @@ import {
 } from "@material-ui/core";
 import { TransitionGroup } from "react-transition-group";
 import { useDispatch, useSelector } from "react-redux";
-import CheckIcon from "@mui/icons-material/Check";
+import { VscPassFilled } from "react-icons/vsc";
+import { GetAllContent } from "../Redux/content";
 
 export default function Step2() {
   const dispatch = useDispatch();
   const [Fanswer, setFanswer] = useState("");
   const [Sanswer, setSanswer] = useState("");
-  const firstStep = useSelector((state) => state.StepOneReducer);
+  const [company, setCompany] = useState("");
 
-  console.log(firstStep);
+  const firstStep = useSelector((state) => state.StepOneReducer);
+  const SecondStep = useSelector((state) => state.StepTwoMethod);
+
+  const Answers = [];
 
   const isYes = () => {
     if (Fanswer === "Yes") {
@@ -30,13 +34,23 @@ export default function Step2() {
     }
     return false;
   };
-
   const hundleFinished = () => {
     if (Fanswer !== "" && Sanswer !== "") {
       dispatch(StepTwoMethod(true));
+      Answers.push(Fanswer);
+      Answers.push(Sanswer);
+      if (company !== "") {
+        Answers.push(company);
+      }
       return true;
     } else return false;
   };
+
+  useEffect(() => {
+    if (SecondStep === true) {
+      dispatch(GetAllContent(Answers));
+    }
+  }, [SecondStep]);
 
   return (
     <>
@@ -52,7 +66,7 @@ export default function Step2() {
                 setFanswer(e.target.value);
               }}
               value="Yes"
-              control={<Radio />}
+              control={<Radio color="primary" />}
               label="Yes"
             />
             <FormControlLabel
@@ -61,7 +75,7 @@ export default function Step2() {
                 setFanswer(e.target.value);
               }}
               value="No"
-              control={<Radio />}
+              control={<Radio color="primary" />}
               label="No"
             />
           </RadioGroup>
@@ -80,7 +94,13 @@ export default function Step2() {
                       <Collapse in={true}>
                         <ListItem>
                           <ListItemText primary="Company Name:" />
-                          <input required type="text" />
+                          <input
+                            onChange={(e) => {
+                              setCompany(e.target.value);
+                            }}
+                            required
+                            type="text"
+                          />
                         </ListItem>
                       </Collapse>
                     </>
@@ -105,7 +125,7 @@ export default function Step2() {
                 setSanswer(e.target.value);
               }}
               value="Yes"
-              control={<Radio />}
+              control={<Radio color="primary" />}
               label="Yes"
             />
             <FormControlLabel
@@ -114,7 +134,7 @@ export default function Step2() {
                 setSanswer(e.target.value);
               }}
               value="No"
-              control={<Radio />}
+              control={<Radio color="primary" />}
               label="No"
             />
           </RadioGroup>
@@ -124,7 +144,7 @@ export default function Step2() {
             {hundleFinished() ? (
               <Collapse in={true}>
                 <ListItem>
-                  <CheckIcon className="correct-icon" />
+                  <VscPassFilled className="correct-icon" />
                 </ListItem>
               </Collapse>
             ) : (

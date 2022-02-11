@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital,wght@0,100;0,500;1,200;1,300&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 html {
   scroll-behavior: smooth;
 }
@@ -7,14 +9,13 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: Montserrat, serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .header {
-  font-style: italic;
+  font-style: italic !important;
   font-size: 25px;
-  font-weight: 600;
-  font-family: sans-serif;
+  font-weight: bold !important;
 }
 
 .header-color {
@@ -42,7 +43,6 @@ body {
   width: 100%;
 }
 .grid-one {
-  height: 100%;
   width: 100%;
 }
 
@@ -53,10 +53,12 @@ body {
 }
 
 .steps {
-  width: 4%;
-  position: absolute;
-  top: 10%;
+  width: 16%;
+  left: 5%;
+  position: relative;
+  top: 20px;
   border-radius: 9px !important;
+  text-align: center;
 }
 
 .step-text {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import SelectUnstyled from "@mui/base/SelectUnstyled";
-import CheckIcon from "@mui/icons-material/Check";
+import { VscPassFilled } from "react-icons/vsc";
 import {
   Grid,
   Typography,
@@ -20,6 +20,7 @@ import {
 } from "./Selects.styled";
 import { TransitionGroup } from "react-transition-group";
 import { StepOneMethod } from "../Redux/Step1";
+import { GetAllContent } from "../Redux/content";
 
 const CustomSelect = (props) => {
   const components = {
@@ -53,6 +54,7 @@ export default function Selects() {
   const [attendance, setAttendance] = useState([]);
   const [contentArr, setContentArr] = useState([]);
   const [finished, setFinished] = useState(false);
+  const SecondStep = useSelector((state) => state.StepTwoMethod);
 
   const setContent = (value, index) => {
     const newArr = contentArr.map((item) => item);
@@ -67,6 +69,12 @@ export default function Selects() {
       dispatch(StepOneMethod(true));
     } else setFinished(false);
   };
+
+  useEffect(() => {
+    if (SecondStep === true) {
+      contentArr.map((item) => dispatch(GetAllContent(item)));
+    } else return;
+  }, [SecondStep]);
 
   const renderFields = (e, value, index) => {
     return (
@@ -117,7 +125,7 @@ export default function Selects() {
         container
         item
       >
-        <Typography className="header" variant="p">
+        <Typography className="header" variant="h5">
           Please provide full names:
         </Typography>
         <FormControl>
@@ -134,7 +142,7 @@ export default function Selects() {
             <TransitionGroup>
               {finished ? (
                 <Collapse in={true}>
-                  <CheckIcon className="correct-icon" />
+                  <VscPassFilled className="correct-icon" />
                 </Collapse>
               ) : (
                 <></>
