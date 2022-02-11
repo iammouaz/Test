@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital,wght@0,100;0,500;1,200;1,300&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image: url("/public/bg.jpg");
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.header {
+  font-style: italic !important;
+  font-size: 25px;
+  font-weight: bold !important;
+}
+
+.header-color {
+  color: rgb(40, 129, 207);
+}
+
+.card-one {
+  padding: 35px 35px 35px 35px;
+  margin: 5px;
+  background-color: #bcecdc !important;
+  width: 100%;
+}
+
+.card-two {
+  padding: 35px 35px 35px 35px;
+  margin: 5px;
+  background-color: hsl(206deg 65% 71%) !important;
+  width: 100%;
+}
+
+.card-three {
+  padding: 35px 35px 35px 35px;
+  margin: 5px;
+  background-color: hsl(11deg 49% 80%) !important;
+  width: 100%;
+}
+.grid-one {
+  width: 100%;
+}
+
+.correct-icon {
+  color: green;
+  font-size: 85px !important;
+  align-self: center;
+}
+
+.steps {
+  width: 16%;
+  left: 5%;
+  position: relative;
+  top: 20px;
+  border-radius: 9px !important;
+  text-align: center;
+}
+
+.step-text {
+  font-size: 25px !important;
+  font-weight: bold !important;
+}
